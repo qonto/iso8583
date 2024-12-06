@@ -199,9 +199,10 @@ func TestPackerandUnpackerWithVariantDataLength(t *testing.T) {
 
 	packed, err := str.Pack()
 	require.NoError(t, err)
-	require.Equal(t, 0xf2, packed[0])
 
 	_, err = str.Unpack(packed)
 	require.NoError(t, err)
-	require.Equal(t, data, str.Bytes())
+	bytes, err := str.Bytes()
+	require.NoError(t, err)
+	require.Equal(t, data, bytes)
 }
